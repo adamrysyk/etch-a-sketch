@@ -39,7 +39,8 @@ canvas.shake {
 button {
   color: white;
   cursor: pointer;
-  background: #d60087;
+  background: aquamarine;
+  border-radius: 7px;
   padding: 1rem;
   border: 0;
   border: 2px solid transparent;
