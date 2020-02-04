@@ -1,3 +1,10 @@
+html {
+  font-size: 62.5%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  box-sizing: border-box;
+}
+
 *,
 *:before,
 *:after {
@@ -5,6 +12,8 @@
 }
 
 body {
+  font-size: 2rem;
+  line-height: 1.5;
   min-height: 100vh;
   display: grid;
   align-items: center;
@@ -25,6 +34,18 @@ canvas {
 
 canvas.shake {
   animation: shake 0.5s linear 1;
+}
+
+button {
+  color: white;
+  cursor: pointer;
+  background: #d60087;
+  padding: 1rem;
+  border: 0;
+  border: 2px solid transparent;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 2rem;
 }
 
 @keyframes shake {
