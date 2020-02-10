@@ -1,15 +1,16 @@
 const canvas = document.getElementById('etch-a-sketch');
 const ctx = canvas.getContext('2d');
 const { width, height } = canvas;
+const shakeButton = document.querySelector('button');
 
 let x = Math.floor(Math.random() * width);
 let y = Math.floor(Math.random() * height);
-
-const shakeButton = document.querySelector('shake');
+let hue = 0;
 
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 10;
+ctx.lineWidth = 30;
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
 
 ctx.beginPath();
 ctx.moveTo(x, y);
@@ -17,7 +18,8 @@ ctx.lineTo(x, y);
 ctx.stroke();
 
 const draw = ({ key }) => {
-    console.log(key);
+    hue += 5;
+    ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`
     ctx.beginPath();
     ctx.moveTo(x, y)
     switch(key) {
@@ -33,6 +35,8 @@ const draw = ({ key }) => {
         case 'ArrowRight':
             x += 10;
             break;
+        default:
+            break;
 
     }
     ctx.lineTo(x, y);
@@ -46,4 +50,13 @@ const handleKeyDown = e => {
     }
 };
 
+const clearCanvas = () => {
+    canvas.classList.add('shake');
+    ctx.clearRect(0, 0, width, height);
+    canvas.addEventListener('animationend', () => {
+        canvas.classList.remove('shake');
+    }, { once: true })
+}
+
+shakeButton.addEventListener('click', clearCanvas);
 window.addEventListener('keydown', handleKeyDown);
